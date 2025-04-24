@@ -14,14 +14,22 @@ export const baseHtml = (title) => `
   </header>
 `;
 
-export const getNavBar = (isDashboard) => `
-  <nav>
-    <a href="/products">Tienda</a>
-    ${isDashboard ? '<a href="/products/dashboard">Dashboard</a> <a href="/auth/logout" onclick="event.preventDefault(); document.getElementById(\'logout-form\').submit()">Logout</a>' : '<a href="/auth/login">Login</a>'}
-    <form id="logout-form" action="/auth/logout" method="POST" style="display:none"></form>
-  </nav>
-  <main>
-`;
+export function getNavBar(isDashboard) {
+  return `
+    <nav>
+      <a href="/products">Tienda</a>
+      ${isDashboard
+        ? `
+          <a href="/products/dashboard">Dashboard</a>
+          <a href="/products/dashboard/new" class="button">Nuevo Producto</a>
+          <form action="/auth/logout" method="POST" style="display:inline">
+            <button type="submit">Logout</button>
+          </form>
+        `
+        : `<a href="/auth/login">Login</a>`}
+    </nav>
+  `;
+}
 
 export const getProductCards = (products, isDashboard) => {
   return products.map(p => `

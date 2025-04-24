@@ -1,8 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 import connectDB from './config/db.js';
 import productRoutes from './routes/productRoutes.js';
-// import authRoutes from './routes/authRoutes.js'; // BONUS Firebase
+import authRoutes from './routes/authRoutes.js'; // BONUS Firebase
 import methodOverride from 'method-override';
 
 // Carga variables de entorno
@@ -14,10 +15,12 @@ connectDB();
 const app = express();
 
 // Middlewares
+app.use(cookieParser()); 
 app.use(express.urlencoded({ extended: true }));    // Para procesar formularios
 app.use(express.json());                              // Para procesar JSON (API/SWagger)
 app.use(methodOverride('_method'));                   // Para soportar PUT y DELETE en HTML
 app.use(express.static('public'));                    // Para servir CSS, imágenes, etc.
+app.use('/auth', authRoutes);
 
 // Rutas
 app.use('/products', productRoutes);

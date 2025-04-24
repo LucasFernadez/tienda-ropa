@@ -8,20 +8,21 @@ import {
   updateProduct,
   deleteProduct
 } from '../controllers/productController.js';
+import { verifyFirebaseAuth } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
-// Vista pública
+// --- RUTAS ADMIN (estáticas y con verbos específicos) ---
+router.get('/dashboard', verifyFirebaseAuth, showProducts);
+router.get('/dashboard/new', verifyFirebaseAuth, showNewProduct);
+router.post('/dashboard', verifyFirebaseAuth, createProduct);
+router.get('/dashboard/:productId/edit', verifyFirebaseAuth, showEditProduct);
+router.put('/dashboard/:productId', verifyFirebaseAuth, updateProduct);
+router.delete('/dashboard/:productId/delete', verifyFirebaseAuth, deleteProduct);
+router.get('/dashboard/:productId', verifyFirebaseAuth, showProductById);
+
+// --- RUTAS PÚBLICAS ---
 router.get('/', showProducts);
 router.get('/:productId', showProductById);
-
-// Dashboard admin
-router.get('/dashboard', showProducts);
-router.get('/dashboard/new', showNewProduct);
-router.post('/dashboard', createProduct);
-router.get('/dashboard/:productId', showProductById);
-router.get('/dashboard/:productId/edit', showEditProduct);
-router.post('/dashboard/:productId/edit', updateProduct);
-router.post('/dashboard/:productId/delete', deleteProduct);
 
 export default router;
