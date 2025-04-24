@@ -4,6 +4,14 @@ import admin from '../config/firebase.js';
  * Muestra el formulario de login usando Firebase client SDK.
  */
 export function showLoginForm(req, res) {
+  const {
+    FIREBASE_API_KEY,
+    FIREBASE_AUTH_DOMAIN,
+    FIREBASE_PROJECT_ID,
+    FIREBASE_STORAGE_BUCKET,
+    FIREBASE_MESSAGING_SENDER_ID,
+    FIREBASE_APP_ID
+  } = process.env;
   const html = `
 <!DOCTYPE html>
 <html lang="es">
@@ -34,12 +42,12 @@ export function showLoginForm(req, res) {
   <!-- Inicialización de Firebase -->
   <script>
    const firebaseConfig = {
-      apiKey: "AIzaSyDmAFDk-9abtq1V2dYQpcar1Jt85Ns8oTs",
-      authDomain: "tienda-ropa-67a1e.firebaseapp.com",
-      projectId: "tienda-ropa-67a1e",
-      storageBucket: "tienda-ropa-67a1e.firebasestorage.app",
-     messagingSenderId: "292932879175",
-     appId: "1:292932879175:web:2a2e26554a896e1f9e0262"
+       apiKey: "${FIREBASE_API_KEY}",
+      authDomain: "${FIREBASE_AUTH_DOMAIN}",
+      projectId: "${FIREBASE_PROJECT_ID}",
+      storageBucket: "${FIREBASE_STORAGE_BUCKET}",
+      messagingSenderId: "${FIREBASE_MESSAGING_SENDER_ID}",
+      appId: "${FIREBASE_APP_ID}"
 };
     firebase.initializeApp(firebaseConfig);
   </script>
