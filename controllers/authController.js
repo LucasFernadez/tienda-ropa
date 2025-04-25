@@ -99,6 +99,7 @@ export async function login(req, res) {
       maxAge: expiresIn,
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
       path: '/'
     });
 
