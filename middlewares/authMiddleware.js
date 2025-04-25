@@ -7,11 +7,11 @@ export const verifyFirebaseAuth = async (req, res, next) => {
     return res.redirect('/auth/login');
   }
   try {
-    // Verificamos el ID Token (aud = projectId)
-    await admin.auth().verifyIdToken(token);
+    // Esto lanzará si el token es inválido o expirado
+    const decoded = await admin.auth().verifySessionCookie(token, true);
+    req.user = decoded;
     next();
   } catch (err) {
-    console.log('Token inválido o expirado:', err.code);
     return res.redirect('/auth/login');
   }
 };
