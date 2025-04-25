@@ -8,28 +8,48 @@
   /* Tipografía y fondo */
   body {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+    background-image: url(Body.jpeg);
+    color: #8d8181dc;
     line-height: 1.6;
     padding: 20px;
+    
   }
   
   a {
-    color: #007bff;
+    color: black;
     text-decoration: none;
   }
   a:hover {
-    text-decoration: underline;
+    color:  rgb(255, 145, 0);
   }
   
   /* Cabecera y navegación */
   header {
-    margin-bottom: 20px;
+    margin-bottom: 2px;
+    background-image: url(Header.jpg);
+    background-repeat: no-repeat;       
+    background-position: center center; 
+    background-size: cover; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 0 0 5px rgba(0,0,0,0.7);            
   }
   header h1 {
     font-size: 2rem;
     margin-bottom: 10px;
     text-align: center;
+    color:  black;
+    font-weight: bold;
+  }
+  .login-container {
+    color: black;
+  }
+
+  .login-container button {
+    display:inline;
+    width: auto;
   }
   
   nav {
@@ -41,9 +61,15 @@
   
   nav a {
     padding: 8px 12px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: black;
+    color: white;
     border-radius: 4px;
+    margin-bottom: 70px;
+  }
+
+  nav a:hover {
+   background-color: rgb(255, 145, 0);
+   color: black;
   }
   
   /* Contenedor principal */
@@ -54,7 +80,7 @@
   
   /* Tarjetas de producto */
   .product-card {
-    background-color: #fff;
+    background-color: grey;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 15px;
@@ -76,26 +102,26 @@
   .product-card h2 {
     font-size: 1.2rem;
     margin-bottom: 8px;
+    color: black;
   }
   
   .product-card p {
-    margin-bottom: 8px;
+    margin-bottom: 1px;
+    color: black;
   }
   
   .product-card button,
   .product-card a.button {
-    display: inline-block;
-    padding: 6px 10px;
-    margin: 5px 2px;
-    background-color: #28a745;
+    display: flex;
+    padding: 1px 1px;
+    margin: 1px 1px;
+    background-color: red;
     color: #fff;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
+    flex-direction: column;
   }
-  .product-card a.button.delete {
-    background-color: #dc3545;
-  }
+  
   
   /* Detalle de producto */
   .product-detail {
@@ -124,20 +150,16 @@
   }
   
   /* Formularios */
-  form {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
+  
   
   form label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
+    flex-direction: column;
+    color: black;
+    width: 100%;
+    max-width: 400px;
   }
   
   form input[type="text"],
@@ -156,16 +178,18 @@
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: black;
     color: #fff;
     border: none;
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
+    max-width: 400px;
   }
   
   form button:hover {
-    background-color: #0056b3;
+    background-color:  rgb(255, 145, 0);
+    color: black;
   }
   
   /* Pie de página */
@@ -174,4 +198,7 @@
     margin-top: 40px;
     color: #777;
   }
+
   
+  
+ 
