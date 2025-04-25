@@ -98,8 +98,7 @@ export async function login(req, res) {
     res.cookie('__session', sessionCookie, {
       maxAge: expiresIn,
       httpOnly: true,
-      secure: false,
-      sameSite: 'lax',
+      secure: process.env.NODE_ENV === 'production',
       path: '/'
     });
 
